@@ -1,11 +1,12 @@
-<article >
-    <section>
+<article>
+<section class="info-article">
 <div class="like">{{article.votes}} Like</div>
 <div>
     <a href="{{article.link}}">{{article.title}}</a>
 </div>
 <div>ID = {{article.id}}</div>
 </section>
+
 <button class="voteup" (click)="voteUp()">Vote up</button>
 <button class="votedown" (click)="voteDown()">Vote down</button>
 <button *ngIf="!UpdateOn" class="update" (click)="updateArticleOn()">Update</button>

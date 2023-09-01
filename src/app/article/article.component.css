@@ -7,7 +7,7 @@ button{
 
 article, .app-article{
     margin: 10px;
-    width: 600px;
+    width: 700px;
     align-items: center;
     padding: 8px;
     border: 1px solid #ccc;
@@ -23,6 +23,10 @@ article, .app-article{
 
 .voteup{
     background-color: greenyellow;
+}
+.info-article{
+    width: 100px;
+    text-align: center;
 }
 
 
