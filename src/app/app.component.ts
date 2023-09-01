@@ -13,7 +13,7 @@ export class AppComponent implements OnInit {
   title = 'tp2-appArticles';
   articles: Article[] = [];
   updateOn: boolean = false;
-  selectedArticle: Article = new Article('dummy', 'link', 0);
+  selectedArticle: Article = new Article('dummy', 'link',0);
 
   // constructor(private service: ArticleService){
   //   this.articles = service.getArticles();}
@@ -25,9 +25,13 @@ export class AppComponent implements OnInit {
     this.service
       .getArticles()
       .subscribe(restArticles => this.articles = restArticles, error => console.log('!!!!!!!!!!!!'));
+      // const id = this.objetJSON.id;
+      // console.log("L'ID de l'objet JSON est : " + id);
+      
   }
 
   addArticle(title: HTMLInputElement, link: HTMLInputElement) {
+
     this.service.postArticles(new Article(title.value, link.value)).subscribe();
     title.value = '';
     link.value = '';
@@ -36,19 +40,21 @@ export class AppComponent implements OnInit {
     return false;
     // empeche rechargement de la page
   }
-  deleteArticle(titleToDelete: HTMLInputElement) {
-    const title = titleToDelete.value;
-    if (!title) {
+
+  deleteArticle(idToDelete: HTMLInputElement) {
+    const id = idToDelete.value;
+    if (!id) {
       return; // Ne rien faire si le titre est vide
     }
-
-    const index = this.articles.findIndex((article) => article.title === title);
+    const index = this.articles.findIndex((article) => article.id === parseInt(id));
     if (index !== -1) {
       this.articles.splice(index, 1); // Supprime l'article à l'index trouvé
-      titleToDelete.value = ''; // Réinitialise le champ de saisie
-      console.log(`Deleted article with title: ${title}`);
+      idToDelete.value = ''; // Réinitialise le champ de saisie
+      console.log(`Deleted article with id: ${id}`);
+      this.service.deleteArticles(index+1).subscribe(()=>
+      this.getArticles())
     } else {
-      console.log(`Article with title ${title} not found.`);
+      console.log(`Article with title ${id} not found.`);
     }
     return false;
   }
@@ -59,9 +65,19 @@ export class AppComponent implements OnInit {
     return this.articles.sort((a: Article, b: Article) => b.votes - a.votes);
   }
 
+  getArticles(){
+    this.service.getArticles().subscribe(a=> this.articles =a);
+  }
+
   handleArticleRemoval(article: Article) {
+    // this.service.deleteArticles(article).subscribe((data)=>{
+    //   this.getArticles();
+    // });
+
     const indexToRemove = this.articles.indexOf(article);
     if (indexToRemove !== -1) {
+      this.service.deleteArticles(article.id).subscribe(()=>
+      this.getArticles())
       this.articles.splice(indexToRemove, 1);
     }
     return false;

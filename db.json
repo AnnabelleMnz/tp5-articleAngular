@@ -1,12 +1,6 @@
 {
   "articles": [
     {
-      "id": 1,
-      "title": "Argular 2",
-      "votes": 10,
-      "link": "http://angular.io"
-    },
-    {
       "id": 2,
       "title": "Fullstack TEST",
       "votes": 0,
@@ -35,6 +29,24 @@
       "votes": 0,
       "title": "1",
       "id": 6
+    },
+    {
+      "title": "test",
+      "votes": 1,
+      "link": "http://angular.io",
+      "id": 7
+    },
+    {
+      "id": 8,
+      "link": "1",
+      "votes": 0,
+      "title": "1"
+    },
+    {
+      "id": 9,
+      "link": "",
+      "votes": 0,
+      "title": ""
     }
   ]
 }

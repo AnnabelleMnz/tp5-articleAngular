@@ -20,7 +20,7 @@ export class HttpserviceService {
     return this.client.post<Article[]>('http://localhost:3000/articles', article);
   }
 
-   deleteArticles(id : number) : Observable<Article[]> {
-    return this.client.delete<Article[]>('http://localhost:3000/articles'+id);
+   deleteArticles(id : number) : Observable<any> {
+    return this.client.delete('http://localhost:3000/articles/'+id);
   }
 }

@@ -28,6 +28,6 @@ remove = new EventEmitter();
   }
 
   removeArticle(article:Article){
-    this.remove.emit(article);
+    this.remove.emit(article.id);
   }
 }
