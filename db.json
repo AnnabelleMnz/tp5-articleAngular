@@ -1,0 +1,40 @@
+{
+  "articles": [
+    {
+      "id": 1,
+      "title": "Argular 2",
+      "votes": 10,
+      "link": "http://angular.io"
+    },
+    {
+      "id": 2,
+      "title": "Fullstack TEST",
+      "votes": 0,
+      "link": "http://angular.io"
+    },
+    {
+      "link": "https://www.google.com/",
+      "votes": 0,
+      "title": "mon appli",
+      "id": 3
+    },
+    {
+      "link": "f",
+      "votes": 0,
+      "title": "f",
+      "id": 4
+    },
+    {
+      "link": "POSTArticle",
+      "votes": 0,
+      "title": "test postMan",
+      "id": 5
+    },
+    {
+      "link": "1",
+      "votes": 0,
+      "title": "1",
+      "id": 6
+    }
+  ]
+}

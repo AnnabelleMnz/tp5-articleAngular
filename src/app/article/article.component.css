@@ -1,0 +1,30 @@
+
+button{
+    margin: 10px;
+    padding: 10px;
+    border-radius: 10px;
+}
+
+article, .app-article{
+    margin: 10px;
+    width: 600px;
+    align-items: center;
+    padding: 8px;
+    border: 1px solid #ccc;
+    border-radius: 3px;
+    display: flex;
+    align-items: center;
+    background-color: aquamarine;
+}
+
+.delete{
+    background-color: red;
+}
+
+.voteup{
+    background-color: greenyellow;
+}
+
+
+
+
