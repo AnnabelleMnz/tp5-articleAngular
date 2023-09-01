@@ -1,52 +1,28 @@
 {
   "articles": [
     {
-      "id": 2,
-      "title": "Fullstack TEST",
+      "link": "https://www.google.com/",
       "votes": 0,
-      "link": "http://angular.io"
+      "title": "Angular 2",
+      "id": 2
     },
     {
       "link": "https://www.google.com/",
       "votes": 0,
-      "title": "mon appli",
+      "title": "Angular 3",
       "id": 3
     },
     {
       "link": "f",
       "votes": 0,
-      "title": "f",
+      "title": "id 4",
       "id": 4
     },
     {
       "link": "POSTArticle",
       "votes": 0,
-      "title": "test postMan",
+      "title": "id 5",
       "id": 5
-    },
-    {
-      "link": "1",
-      "votes": 0,
-      "title": "1",
-      "id": 6
-    },
-    {
-      "title": "test",
-      "votes": 1,
-      "link": "http://angular.io",
-      "id": 7
-    },
-    {
-      "id": 8,
-      "link": "1",
-      "votes": 0,
-      "title": "1"
-    },
-    {
-      "id": 9,
-      "link": "",
-      "votes": 0,
-      "title": ""
     }
   ]
 }

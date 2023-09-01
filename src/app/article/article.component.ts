@@ -9,9 +9,13 @@ import { Article } from './article.model';
 export class ArticleComponent {
 @Input()
 article: Article;
+UpdateOn :boolean =false;
 
 @Output()
 remove = new EventEmitter();
+
+@Output()
+update = new EventEmitter();
 
   constructor(){
     this.article = new Article('', '', 0);
@@ -29,5 +33,17 @@ remove = new EventEmitter();
 
   removeArticle(article:Article){
     this.remove.emit(article.id);
+  }
+
+  updateArticleOn(){
+    this.UpdateOn =true;
+  }
+
+  updateArticle(newTitle: HTMLInputElement){
+    this.update.emit(newTitle);
+    this.UpdateOn =false;
+    console.log("new title"+ newTitle.value);
+    
+
   }
 }

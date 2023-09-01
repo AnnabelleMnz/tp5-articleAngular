@@ -15,23 +15,16 @@ export class AppComponent implements OnInit {
   updateOn: boolean = false;
   selectedArticle: Article = new Article('dummy', 'link',0);
 
-  // constructor(private service: ArticleService){
-  //   this.articles = service.getArticles();}
-
   // le articleService recupere le HTTPService et crée  la fonction getArticles qui fait le .get
   constructor(private service: HttpserviceService) {}
 
   ngOnInit(): void {
     this.service
       .getArticles()
-      .subscribe(restArticles => this.articles = restArticles, error => console.log('!!!!!!!!!!!!'));
-      // const id = this.objetJSON.id;
-      // console.log("L'ID de l'objet JSON est : " + id);
-      
+      .subscribe(restArticles => this.articles = restArticles, error => console.log('!!!!!!!!!!!!'));     
   }
 
   addArticle(title: HTMLInputElement, link: HTMLInputElement) {
-
     this.service.postArticles(new Article(title.value, link.value)).subscribe();
     title.value = '';
     link.value = '';
@@ -40,26 +33,29 @@ export class AppComponent implements OnInit {
     return false;
     // empeche rechargement de la page
   }
-
+  
+// methode pour supprimer par Input id
   deleteArticle(idToDelete: HTMLInputElement) {
-    const id = idToDelete.value;
-    if (!id) {
+    const idSearched = (idToDelete.value);
+    
+    if (!idSearched) {
       return; // Ne rien faire si le titre est vide
     }
-    const index = this.articles.findIndex((article) => article.id === parseInt(id));
+    // on recherche l'id
+    const index = this.articles.findIndex((article) => article.id === parseInt(idSearched));
     if (index !== -1) {
       this.articles.splice(index, 1); // Supprime l'article à l'index trouvé
       idToDelete.value = ''; // Réinitialise le champ de saisie
-      console.log(`Deleted article with id: ${id}`);
-      this.service.deleteArticles(index+1).subscribe(()=>
+      console.log(`METHODE EN INPUT  : Deleted article with id: ${idSearched} index ${index}`);
+      this.service.deleteArticles(index).subscribe(()=>
       this.getArticles())
+      
     } else {
-      console.log(`Article with title ${id} not found.`);
+      console.log(`Article with title ${idSearched} not found.`);
     }
+    location.reload();
     return false;
   }
-
-  reset() {}
 
   sortedArticles(): Article[] {
     return this.articles.sort((a: Article, b: Article) => b.votes - a.votes);
@@ -69,17 +65,12 @@ export class AppComponent implements OnInit {
     this.service.getArticles().subscribe(a=> this.articles =a);
   }
 
-  handleArticleRemoval(article: Article) {
-    // this.service.deleteArticles(article).subscribe((data)=>{
-    //   this.getArticles();
-    // });
-
-    const indexToRemove = this.articles.indexOf(article);
-    if (indexToRemove !== -1) {
-      this.service.deleteArticles(article.id).subscribe(()=>
+  handleArticleRemoval(id :number) {
+      this.articles.splice(id, 1); // Supprime l'article à l'index trouvé
+      console.log(`Deleted article with id: ${id}`);
+      this.service.deleteArticles(id).subscribe(()=>
       this.getArticles())
-      this.articles.splice(indexToRemove, 1);
-    }
+      location.reload();
     return false;
   }
 }

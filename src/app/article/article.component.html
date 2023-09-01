@@ -1,10 +1,19 @@
 <article >
+    <section>
 <div class="like">{{article.votes}} Like</div>
 <div>
     <a href="{{article.link}}">{{article.title}}</a>
-   
 </div>
+<div>ID = {{article.id}}</div>
+</section>
 <button class="voteup" (click)="voteUp()">Vote up</button>
-<button (click)="voteDown()">Vote down</button>
+<button class="votedown" (click)="voteDown()">Vote down</button>
+<button *ngIf="!UpdateOn" class="update" (click)="updateArticleOn()">Update</button>
+<div *ngIf="UpdateOn">
+<label for="title">New <title></title>:</label><input name="title" placeholder="my title to update" #newTitle>
+<button *ngIf="UpdateOn" class="update" (click)="updateArticle(newTitle)">Enter</button>
+</div>
+
 <button class= "delete" (click)="removeArticle(article)">Delete</button>
+
 </article>

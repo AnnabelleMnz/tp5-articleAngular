@@ -1,4 +1,4 @@
-<H1>TP2 - site d'articles</H1>
+<H1>TP5 - site d'articles</H1>
 
 <form class="grid-form">
   <section class="add-link">Add a link
@@ -10,24 +10,19 @@
 </div>
 <button (click)="addArticle(newTitle,newLink)">Submit link</button>
 </section>
-<section class="delete-link">Delete by name
+<section class="delete-link">Delete by id
   <div>
-    <label for="titleDel" >Title:</label><input name="titleDel" placeholder="my title to delete" #TitleToDelete>
+    <label for="titleDel" >ID article: </label><input name="titleDel" placeholder="my article to delete by id" #idToDelete>
   </div>
-  <button (click)="deleteArticle(TitleToDelete)">Delete article by name</button>
-  <button (click)="reset()">Reset page</button>
+  <button (click)="deleteArticle(idToDelete)">Delete article by id</button>
+
 </section>
 </form>
 
-<!-- <app-article *ngFor="let article of articles" [article]="article"></app-article> -->
-<!-- (click)="removeArticle(article)" -->
-
-<!-- <app-article *ngFor="let article of sortedArticles()" [article]="article" (remove)="handleArticleRemoval($event)"></app-article> -->
-
-
-
 <section class="articles">
-  
-<app-article *ngFor="let article of articles" [article]="article" (remove)=" handleArticleRemoval($event)">{{article}}</app-article>
+<!-- dans $event on récupère l'id de l'article en cours -->
+<app-article 
+*ngFor="let article of articles" [article]="article" 
+(remove)=" handleArticleRemoval($event)">
+{{article}} id: {{article.id}}</app-article>
 </section>
-<!-- <app-article *ngFor="let article of articlesParent " [articleChild]="article"></app-article> -->
