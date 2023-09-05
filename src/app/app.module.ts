@@ -5,16 +5,30 @@ import { BrowserModule } from '@angular/platform-browser';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { ArticleComponent } from './article/article.component';
+import { TemplateDrivenFormComponent } from './template-driven-form/template-driven-form.component';
+import { FormsModule } from '@angular/forms';
+import { RealeaseFormComponent } from './components/realease-form/realease-form.component';
+import { VersionControlComponent } from './components/version-control/version-control.component';
+import { ReleaseLogsComponent } from './components/release-logs/release-logs.component';
+import { HeaderComponent } from './header/header.component';
+import { HomePageComponent } from './home-page/home-page.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    ArticleComponent
+    ArticleComponent,
+    TemplateDrivenFormComponent,
+    RealeaseFormComponent,
+    VersionControlComponent,
+    ReleaseLogsComponent,
+    HeaderComponent,
+    HomePageComponent
   ],
   imports: [
     BrowserModule,
     HttpClientModule,
-    AppRoutingModule
+    AppRoutingModule,
+    FormsModule,
   ],
   providers: [],
   bootstrap: [AppComponent]

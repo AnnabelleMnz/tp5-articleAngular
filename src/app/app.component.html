@@ -1,23 +1,38 @@
-<H1>TP5 - site d'articles</H1>
+<!-- <H1>TP5 - site d'articles</H1> -->
 
-<form class="grid-form">
-  <section class="add-link">Add a link
-<div>
-  <label for="title" >Title:</label><input name="title" placeholder="my title" #newTitle>
-</div>
-<div>
-  <label for="link">Link:</label><input name="link" placeholder="my link" #newLink>
-</div>
-<button (click)="addArticle(newTitle,newLink)">Submit link</button>
-</section>
-<section class="delete-link">Delete by id
+<app-header></app-header>
+<section  ><h1>Add article</h1>
+<form (ngSubmit)="addArticle()" #loginForm="ngForm" novalidate>
   <div>
-    <label for="titleDel" >ID article: </label><input name="titleDel" placeholder="my article to delete by id" #idToDelete>
+  <label for="title">title</label>
+  <div class="col-sm-6">
+  <input type="text" class="form-control" id="title"
+  placeholder="title" minlength="4" required [(ngModel)]="model.title"
+  name="title"
+  #title="ngModel">
+  <div [hidden]="title.valid || title.pristine"
+  class="alert alert-danger">title address is required</div>
+  <div *ngIf="title?.errors?.['minlength']">Name must be at least 4
+  characters long.</div>
   </div>
-  <button (click)="deleteArticle(idToDelete)">Delete article by id</button>
-
+  </div>
+  <div>
+  <label for="link"> link</label>
+  <div>
+  <input type="text" id="link" placeholder="link" required
+  [(ngModel)]="model.link" name="link" #link="ngModel">
+  <div [hidden]="link.valid || link.pristine">link is required</div>
+  </div>
+  </div>
+  <div>
+  <div>
+  <button type="submit"
+  [disabled]="!loginForm.form.valid" >Submit</button>
+  </div>
+  </div>
+  </form>
 </section>
-</form>
+
 
 <section class="articles">
 <!-- dans $event on récupère l'id de l'article en cours -->
@@ -26,3 +41,4 @@
 (remove)=" handleArticleRemoval($event)">
 {{article}} id: {{article.id}}</app-article>
 </section>
+<router-outlet></router-outlet>

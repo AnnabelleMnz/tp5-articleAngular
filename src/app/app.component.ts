@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Article } from './article/article.model';
 import { ArticleService } from './service/article.service';
 import { HttpserviceService } from './service/httpservice.service';
+import { Router } from '@angular/router';
 
 
 @Component({
@@ -10,13 +11,15 @@ import { HttpserviceService } from './service/httpservice.service';
   styleUrls: ['./app.component.css'],
 })
 export class AppComponent implements OnInit {
+model = new Article('','',0);
+
   title = 'tp2-appArticles';
   articles: Article[] = [];
   updateOn: boolean = false;
   selectedArticle: Article = new Article('dummy', 'link',0);
 
   // le articleService recupere le HTTPService et crée  la fonction getArticles qui fait le .get
-  constructor(private service: HttpserviceService) {}
+  constructor(private service: HttpserviceService, private router: Router) {}
 
   ngOnInit(): void {
     this.service
@@ -24,11 +27,11 @@ export class AppComponent implements OnInit {
       .subscribe(restArticles => this.articles = restArticles, error => console.log('!!!!!!!!!!!!'));     
   }
 
-  addArticle(title: HTMLInputElement, link: HTMLInputElement) {
-    this.service.postArticles(new Article(title.value, link.value)).subscribe();
-    title.value = '';
-    link.value = '';
-    console.log(`Adding article title: ${title} and link: ${link}`);
+  addArticle() {
+    this.service.postArticles(new Article(this.model.title, this.model.link)).subscribe();
+    this.model.title = '';
+    this.model.link = '';
+    console.log(`Adding article title: ${this.model.title} and link: ${this.model.link}`);
     location.reload();
     return false;
     // empeche rechargement de la page
