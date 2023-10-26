@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 import { Router } from '@angular/router';
 
 @Component({
@@ -9,10 +9,19 @@ import { Router } from '@angular/router';
 export class HeaderComponent implements OnInit {
   constructor(private router: Router) { }
 
+  @Output()
+  add = new EventEmitter();
+
+addArticleButton : boolean = false;
   ngOnInit(): void {
   }
 
   onAddNewArticle() {
     this.router.navigateByUrl('create');
+  }
+
+  onAddArticle(){
+    this.addArticleButton =true;
+    
   }
 }

@@ -1,44 +1,5 @@
 <!-- <H1>TP5 - site d'articles</H1> -->
 
 <app-header></app-header>
-<section  ><h1>Add article</h1>
-<form (ngSubmit)="addArticle()" #loginForm="ngForm" novalidate>
-  <div>
-  <label for="title">title</label>
-  <div class="col-sm-6">
-  <input type="text" class="form-control" id="title"
-  placeholder="title" minlength="4" required [(ngModel)]="model.title"
-  name="title"
-  #title="ngModel">
-  <div [hidden]="title.valid || title.pristine"
-  class="alert alert-danger">title address is required</div>
-  <div *ngIf="title?.errors?.['minlength']">Name must be at least 4
-  characters long.</div>
-  </div>
-  </div>
-  <div>
-  <label for="link"> link</label>
-  <div>
-  <input type="text" id="link" placeholder="link" required
-  [(ngModel)]="model.link" name="link" #link="ngModel">
-  <div [hidden]="link.valid || link.pristine">link is required</div>
-  </div>
-  </div>
-  <div>
-  <div>
-  <button type="submit"
-  [disabled]="!loginForm.form.valid" >Submit</button>
-  </div>
-  </div>
-  </form>
-</section>
 
-
-<section class="articles">
-<!-- dans $event on récupère l'id de l'article en cours -->
-<app-article 
-*ngFor="let article of articles" [article]="article" 
-(remove)=" handleArticleRemoval($event)">
-{{article}} id: {{article.id}}</app-article>
-</section>
 <router-outlet></router-outlet>

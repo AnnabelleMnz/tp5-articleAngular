@@ -73,3 +73,7 @@ body {
 .ng-invalid:not(form) {
   border-left: 5px solid #a94442; /* red */
   }
+  .app-home-page{
+  display: flex;
+  justify-content: center; /* Centre horizontalement */
+  align-items: center; /* Centre verticalement */}

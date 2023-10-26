@@ -1,0 +1,7 @@
+    <section class="articles">
+    <!-- dans $event on récupère l'id de l'article en cours -->
+    <app-article 
+    *ngFor="let article of articles" [article]="article" 
+    (remove)=" handleArticleRemoval($event)">
+    {{article}} id: {{article.id}}</app-article>
+    </section>

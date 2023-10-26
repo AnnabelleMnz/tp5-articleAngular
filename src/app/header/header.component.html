@@ -3,7 +3,8 @@
     <nav>
       <a routerLink="" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }">Home</a>
       <!-- <a routerLink="article" routerLinkActive="active">Articles</a> -->
-      <a [routerLink]="'articles'">Aller à la page Articles +</a>
+      <a [routerLink]="'articles'" >Aller à la page Articles</a>
+      <a [routerLink]="'add'"  (click)="onAddArticle()">Ajouter un article</a>
     </nav>
     <!-- <button (click)="onAddNewArticle()">+</button> -->
   </header>

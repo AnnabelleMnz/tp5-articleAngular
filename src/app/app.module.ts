@@ -12,6 +12,8 @@ import { VersionControlComponent } from './components/version-control/version-co
 import { ReleaseLogsComponent } from './components/release-logs/release-logs.component';
 import { HeaderComponent } from './header/header.component';
 import { HomePageComponent } from './home-page/home-page.component';
+import { ListArticlesComponent } from './list-articles/list-articles.component';
+import { FormAddArticleComponent } from './form-add-article/form-add-article.component';
 
 @NgModule({
   declarations: [
@@ -22,7 +24,9 @@ import { HomePageComponent } from './home-page/home-page.component';
     VersionControlComponent,
     ReleaseLogsComponent,
     HeaderComponent,
-    HomePageComponent
+    HomePageComponent,
+    ListArticlesComponent,
+    FormAddArticleComponent
   ],
   imports: [
     BrowserModule,
